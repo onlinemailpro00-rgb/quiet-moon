@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لينا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="song" src="assets/audio/song.mp3" loop preload="auto"></audio>
+
+<!-- مشغل الأغنية الظاهر في كل الصفحات -->
+<div class="player" id="player" hidden>
+  <button id="playBtn" aria-label="تشغيل / إيقاف">❚❚</button>
+  <div class="p-info">
+    <span id="songName">اسم الأغنية</span>
+    <span id="songTime" dir="ltr">0:00 / 0:00</span>
+  </div>
+  <i class="bars"><b></b><b></b><b></b></i>
+</div>
+
+<!-- ============ الصفحة 1 ============ -->
+<section class="page active" id="p1">
+  <h1 class="waiting">فيه حاجة مستنياكي <span class="dots"><i>.</i><i>.</i><i>.</i></span></h1>
+
+  <div class="envelope" id="envelope">
+    <svg viewBox="0 0 400 280" class="env-svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#F4F7FA"/><stop offset="1" stop-color="#C9D0D9"/>
+        </linearGradient>
+      </defs>
+      <rect x="4" y="30" width="392" height="246" rx="8" fill="url(#silver)" stroke="#3B1040" stroke-width="2"/>
+      <!-- أغصان -->
+      <g fill="none" stroke="#3B1040" stroke-width="2" stroke-linecap="round">
+        <path d="M200 270 C230 210 300 190 380 120"/>
+        <path d="M250 235 C300 240 340 225 385 200"/>
+        <path d="M290 170 C320 140 350 130 380 60"/>
+      </g>
+      <g fill="#6B2A6F" opacity=".85">
+        <ellipse cx="238" cy="222" rx="11" ry="5" transform="rotate(-40 238 222)"/>
+        <ellipse cx="275" cy="200" rx="11" ry="5" transform="rotate(-30 275 200)"/>
+        <ellipse cx="312" cy="170" rx="11" ry="5" transform="rotate(-50 312 170)"/>
+        <ellipse cx="345" cy="140" rx="11" ry="5" transform="rotate(-45 345 140)"/>
+        <ellipse cx="320" cy="236" rx="11" ry="5" transform="rotate(-10 320 236)"/>
+        <ellipse cx="360" cy="212" rx="11" ry="5" transform="rotate(-25 360 212)"/>
+        <ellipse cx="338" cy="98" rx="11" ry="5" transform="rotate(-60 338 98)"/>
+      </g>
+      <!-- زهرة ليلي -->
+      <g transform="translate(78 205)">
+        <g fill="#4A1550" stroke="#EAA221" stroke-width="1.5">
+          <path d="M0 0 C-10 -40 -50 -70 -62 -42 C-45 -30 -20 -14 0 0Z"/>
+          <path d="M0 0 C25 -30 60 -40 70 -12 C45 -8 20 -4 0 0Z"/>
+          <path d="M0 0 C40 12 70 45 45 62 C25 45 10 20 0 0Z"/>
+          <path d="M0 0 C-5 38 -30 75 -52 58 C-40 35 -20 15 0 0Z"/>
+          <path d="M0 0 C-30 5 -75 -5 -78 22 C-50 28 -20 14 0 0Z"/>
+        </g>
+        <g stroke="#EAA221" stroke-width="2" stroke-linecap="round">
+          <path d="M0 0 L-6 -28"/><path d="M0 0 L22 -22"/><path d="M0 0 L26 8"/>
+        </g>
+        <circle cx="0" cy="0" r="4" fill="#EAA221"/>
+      </g>
+      <!-- غطاء الظرف -->
+      <path class="flap" d="M4 36 L200 160 L396 36 Q398 30 390 30 L10 30 Q2 30 4 36Z" fill="url(#silver)" stroke="#3B1040" stroke-width="2"/>
+      <g fill="none" stroke="#3B1040" stroke-width="1.6" stroke-linecap="round" opacity=".8">
+        <path d="M30 40 C80 80 120 60 170 110"/><path d="M370 40 C320 80 280 60 230 110"/>
+      </g>
+    </svg>
+
+    <!-- الأسطوانة (زرار unlock) -->
+    <button class="disc" id="unlockBtn" aria-label="unlock">
+      <span class="disc-ring"></span>
+      <span class="disc-label">unlock</span>
+    </button>
+  </div>
+
+  <div class="pass-box">
+    <label for="pass">الباسورد</label>
+    <input type="password" id="pass" placeholder="••••" autocomplete="off">
+    <small id="passMsg"></small>
+  </div>
+</section>
+
+<!-- ============ الصفحة 2 ============ -->
+<section class="page" id="p2">
+  <div class="paper">
+    <p id="typed" class="typed"></p><span class="caret" id="caret"></span>
+    <div class="end-wrap"><span id="typedEnd" class="typed-end"></span></div>
+  </div>
+  <button class="btn" id="continueBtn" hidden>كملي</button>
+</section>
+
+<!-- ============ الصفحة 3 ============ -->
+<section class="page" id="p3">
+  <div class="wrap">
+    <h1 class="title">بدايتنا</h1>
+
+    <div class="counter-card">
+      <h2>سوا</h2>
+      <input type="date" id="startDate" class="date-in" data-lock>
+      <div class="units">
+        <div><b id="cDays">0</b><span>يوم</span></div>
+        <div><b id="cHours">0</b><span>ساعة</span></div>
+        <div><b id="cMins">0</b><span>دقيقة</span></div>
+        <div><b id="cSecs">0</b><span>ثانية</span></div>
+      </div>
+    </div>
+
+    <div class="lockbar">
+      <button class="lock" id="lockBtn" aria-label="قفل التعديل">🔒</button>
+      <span id="lockText">التعديل مقفول</span>
+    </div>
+
+    <div class="days">
+      <div class="day">
+        <h3>يوم ما عرفنا بعض</h3>
+        <input type="date" data-key="d1" class="date-in" data-lock>
+        <textarea data-key="n1" placeholder="اكتب ملاحظتك لليوم ده..." data-lock></textarea>
+      </div>
+      <div class="day">
+        <h3>يوم ما اعترفت بحبي ليكي</h3>
+        <input type="date" data-key="d2" class="date-in" data-lock>
+        <textarea data-key="n2" placeholder="اكتب ملاحظتك لليوم ده..." data-lock></textarea>
+      </div>
+      <div class="day">
+        <h3>يوم عمري ما أنساه</h3>
+        <input type="date" data-key="d3" class="date-in" data-lock>
+        <textarea data-key="n3" placeholder="اكتب ملاحظتك لليوم ده..." data-lock></textarea>
+      </div>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <button class="btn" id="msgBtn">massege for you</button>
+
+    <div class="scratch-box" id="scratchBox" hidden>
+      <div class="scratch-msg" id="scratchMsg"></div>
+      <canvas id="scratch"></canvas>
+      <small class="hint" id="hint">خربش هنا</small>
+    </div>
+
+    <section class="heart-zone">
+      <h2>اضغطي على القلب</h2>
+      <button class="heart-btn" id="heartBtn" aria-label="اضغطي على القلب">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs><radialGradient id="hb" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#FF9DBB"/><stop offset=".55" stop-color="#D93A72"/><stop offset="1" stop-color="#7A1E4A"/></radialGradient></defs>
+          <path class="h-body" d="M50 90 C8 60 0 30 22 15 C36 7 48 15 50 26 C52 15 64 7 78 15 C100 30 92 60 50 90Z" fill="url(#hb)"/>
+          <ellipse cx="30" cy="27" rx="9" ry="5" transform="rotate(-35 30 27)" fill="#fff" opacity=".45"/>
+          <path class="h-crack" pathLength="1" d="M52 18 L43 38 L57 50 L45 66 L54 84" fill="none" stroke="#1a0620" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="heart-count" id="heartCount">فاضل <b id="heartLeft">8</b> ضغطات</p>
+      <p class="heart-msg" id="heartMsg" aria-live="polite"></p>
+    </section>
+
+    <footer class="made">
+      <p>صُنع مخصوص ليكي</p>
+      <div class="social">
+        <a href="https://wa.me/201557264872" target="_blank" rel="noopener" aria-label="واتساب">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1.2-1.6-2-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2z" fill="currentColor"/></svg>
+          واتساب
+        </a>
+        <a href="https://www.tiktok.com/@wedora92?_r=1&amp;_t=ZS-9AlR9BubLKk" target="_blank" rel="noopener" aria-label="تيك توك">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.3 2.6 2.2 4.5 5 4.7"/></svg>
+          تيك توك
+        </a>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<!-- طبقة الانتقال: ورد وسحاب -->
+<div class="transition" id="transition" aria-hidden="true"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
